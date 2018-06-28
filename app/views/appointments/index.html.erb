@@ -30,7 +30,11 @@
 <ul class="days">
   <% date_range.each_slice(7) do |week| %>
     <% week.each do |day| %>
-      <li><%= day.day %></li>
+      <% if day == start_date %>
+        <li><span class="active"><%= day.day %></span></li>
+      <% else %>
+        <li><%= day.day %></li>
+      <% end %>
     <% end %>
 
   <% end %>
