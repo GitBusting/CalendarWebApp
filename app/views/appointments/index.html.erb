@@ -7,8 +7,8 @@
 
 <div class="month">      
   <ul>
-    <li class="prev">&#10094;</li>
-    <li class="next">&#10095;</li>
+    <li class="prev" ><%= link_to "<", start_date: (date_range.first - 1.day).beginning_of_month %></li>
+    <li class="next"><%= link_to ">", start_date: (date_range.last + 1.day).beginning_of_month %></li>
     <li>
       <%= start_date.strftime("%B")%>
       <span style="font-size:18px"><%= start_date.year %></span>
