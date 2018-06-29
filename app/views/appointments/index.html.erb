@@ -7,6 +7,9 @@
 
 <% appointments_in_this_month = @appointments.select{ |app| ( date_range.include?(app.start_time.to_date))} %>
 
+<% appointment_days = [] %>
+<% appointments_in_this_month.each do |app| appointment_days.push(app.start_time.to_date) end%>
+
 <div class="month">      
   <ul>
     <li class="prev" ><%= link_to "<", start_date: (date_range.first - 1.day).beginning_of_month %></li>
@@ -19,33 +22,45 @@
 </div>
 
 
-<ul class="weekdays">
-<li>Mon</li>
-    <li>Tue</li>
-    <li>Wed</li>
-    <li>Thu</li>
-    <li>Fri</li>
-    <li>Sat</li>
-    <li>Sun</li>
-</ul>
 
-<% appointment_days = [] %>
-<% appointments_in_this_month.each do |app| appointment_days.push(app.start_time.to_date) end%>
 
-<ul class="days">
+<table class = "calendar">
+  <tr class = "weekdays2">
+    <td>Mon</td>
+    <td>Tue</td>
+    <td>Wed</td>
+    <td>Thu</td>
+    <td>Fri</td>
+    <td>Sat</td>
+    <td>Sun</td>
+  </tr>
   <% date_range.each_slice(7) do |week| %>
-    <% week.each do |day| %>
-      <% if day_index = appointment_days.index(day) %>
-        <li><div><%= appointments_in_this_month[day_index].name %><br> <%= day.day%></div></li>
-      <% elsif day == start_date %>
-        <li><span class="active"><%= day.day %></span></li>
-      <% else %>
-        <li><div><%= day.day %></div></li>
+    <tr class= "days2">
+      <% week.each do |day| %>
+        <% str = day.day.to_s + "\n"%>
+        <% for i in 0...appointment_days.length do 
+              if appointment_days[i] == day 
+                str = str + appointments_in_this_month[i].name + "\n"
+              end
+           end
+        %>
+        <% if day == start_date %>
+          <td><span class="active"><%= str %></span></td>
+        <% else %>
+          <td><%= str %></td>
+        <% end %>
+
       <% end %>
-    <% end %>
+    </tr>
   <% end %>
-</ul>
-  
+</table>
+
+
+
+
+
+
+
 
 
 
