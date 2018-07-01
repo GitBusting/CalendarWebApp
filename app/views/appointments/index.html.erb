@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Appointments</h1>
+
+<% display_style = params.fetch(:display_style, "calendar").to_s %>
+<% if "list".eql? display_style %>
+     <%= render 'list', list: @appointment %>
+    <% else %>
+    <%= render 'calendar', calendar2: @appointment %>
+   <% end %>
+
+
+<%= link_to 'New Appointment', new_appointment_path %>
+
