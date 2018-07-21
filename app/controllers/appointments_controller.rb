@@ -2,10 +2,12 @@ class AppointmentsController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
 
+  helper_method :sort_column, :sort_direction
+
   # GET /appointments
   # GET /appointments.json
   def index
-    @appointments = Appointment.order(params[:sort]+ " " + params[:direction])
+    @appointments = Appointment.order(sort_column + " " + sort_direction)
   end
 
   # GET /appointments/1
@@ -72,4 +74,14 @@ class AppointmentsController < ApplicationController
     def appointment_params
       params.require(:appointment).permit(:name, :start_time,:user_name)
     end
+
+    def sort_column
+      params[:sort] || "name"
+    end
+
+    def sort_direction
+      params[:direction] || "asc"
+    end
+
 end
+
