@@ -2,6 +2,8 @@
 
 <h1>Appointments</h1>
 
+
+
 <% display_style = params.fetch(:display_style, "calendar").to_s %>
 <% if "list".eql? display_style %>
      <%= render 'list', list: @appointment %>
