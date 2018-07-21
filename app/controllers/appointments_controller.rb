@@ -5,7 +5,7 @@ class AppointmentsController < ApplicationController
   # GET /appointments
   # GET /appointments.json
   def index
-    @appointments = Appointment.order(params[:sort])
+    @appointments = Appointment.order(params[:sort]+ " " + params[:direction])
   end
 
   # GET /appointments/1

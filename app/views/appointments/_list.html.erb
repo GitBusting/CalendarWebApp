@@ -1,11 +1,12 @@
 
 <%= link_to "Switch to Calendar View", display_style: "calendar" %>
 
+
 <table>
   <thead>
     <tr>
-      <th><%= link_to "Name", :sort => "name", :display_style => "list" %></th>
-      <th><%= link_to "Start time", :sort => "start_time" , :display_style => "list" %></th>
+      <th><%= sortable "name" %></th>
+      <th><%= sortable "start_time" %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
