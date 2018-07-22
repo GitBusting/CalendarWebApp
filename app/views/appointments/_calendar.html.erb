@@ -34,19 +34,21 @@
   <% date_range.each_slice(7) do |week| %>
     <tr class= "days2">
       <% week.each do |day| %>
-        <% str = day.day.to_s + "\n"%>
-        <% for i in 0...appointment_days.length do 
-              if appointment_days[i] == day 
-                str = str + appointments_in_this_month[i].name + "\n"
-              end
-           end
-        %>
-        <% if day == start_date %>
-          <td><span class="active"><%= str %></span></td>
-        <% else %>
-          <td><%= str %></td>
-        <% end %>
-
+        <% str = day.day.to_s%>
+        <td>
+          <ul id="inside_day">             
+              <% if day == start_date %>
+                <li><span class="active"><%= str %></span></li>
+              <% else %>
+                <li><%= str %></li>
+              <% end %>
+              <% for i in 0...appointment_days.length do %>
+                  <% if appointment_days[i] == day %>
+                    <li><%= link_to appointments_in_this_month[i].name.to_s, appointments_in_this_month[i] %><li>
+                 <% end %> 
+              <% end %>
+          </ul>
+        </td>
       <% end %>
     </tr>
   <% end %>
