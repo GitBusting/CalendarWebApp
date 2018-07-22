@@ -13,7 +13,7 @@ class AppointmentsController < ApplicationController
   # GET /appointments
   # GET /appointments.json
   def calendar
-    @appointments = Appointment.all
+    @appointments = Appointment.search(params[:search])
   end
 
   # GET /appointments/1

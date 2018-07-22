@@ -9,8 +9,8 @@
 
 <div class="month" id="cal">      
   <ul>
-    <li class="prev" ><%= link_to "<", start_date: (date_range.first - 1.day).beginning_of_month %></li>
-    <li class="next"><%= link_to ">", start_date: (date_range.last + 1.day).beginning_of_month %></li>
+    <li class="prev" ><%= link_to "<", start_date: (date_range.first - 1.day).beginning_of_month, search:params[:search] %></li>
+    <li class="next"><%= link_to ">", start_date: (date_range.last + 1.day).beginning_of_month, search:params[:search] %></li>
     <li>
       <%= start_date.strftime("%B")%>
       <span style="font-size:18px"><%= start_date.year %></span>
