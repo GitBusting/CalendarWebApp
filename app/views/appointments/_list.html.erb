@@ -1,5 +1,5 @@
 
-<%= link_to "Switch to Calendar View", display_style: "calendar" %>
+<%= link_to "Switch to Calendar View", appointments_calendar_path %>
 
 
 
@@ -17,7 +17,7 @@
     <% @appointments.each do |appointment| %>
       <tr>
         <td><%= appointment.name %></td>
-        <td><%= appointment.start_time %></td>
+        <td><%= appointment.start_time.to_date %></td>
         <td><%= link_to 'Show', appointment %></td>
         <td><%= link_to 'Edit', edit_appointment_path(appointment) %></td>
         <td><%= link_to 'Destroy', appointment, method: :delete, data: { confirm: 'Are you sure?' } %></td>

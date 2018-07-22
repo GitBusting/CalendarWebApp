@@ -6,10 +6,8 @@
 <% appointment_days = [] %>
 <% appointments_in_this_month.each do |app| appointment_days.push(app.start_time.to_date) end%>
 
-<%= link_to "Switch to List View", display_style: "list" %>
 
-
-<div class="month">      
+<div class="month" id="cal">      
   <ul>
     <li class="prev" ><%= link_to "<", start_date: (date_range.first - 1.day).beginning_of_month %></li>
     <li class="next"><%= link_to ">", start_date: (date_range.last + 1.day).beginning_of_month %></li>
@@ -53,4 +51,3 @@
     </tr>
   <% end %>
 </table>
-

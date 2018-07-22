@@ -7,7 +7,6 @@
 <%= form_tag appointments_path, :method => 'get', :id => "appointments_search" do %>
   <%= hidden_field_tag :direction, params[:direction] %>
   <%= hidden_field_tag :sort, params[:sort] %>
-  <%= hidden_field_tag :display_style, params[:display_style] %>
 
   <p>
     <%= text_field_tag :search, params[:search] %>
@@ -16,14 +15,8 @@
 <% end %>
 
 
-
-<% display_style = params.fetch(:display_style, "calendar").to_s %>
-<% if "list".eql? display_style %>
-     <div id="appointments"><%= render 'list'%></div>
-    <% else %>
-    <%= render 'calendar', calendar2: @appointment %>
-   <% end %>
+<div id="appointments"><%= render 'list'%></div>
+ 
 
 
 <%= link_to 'New Appointment', new_appointment_path %>
-

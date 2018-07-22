@@ -10,6 +10,12 @@ class AppointmentsController < ApplicationController
     @appointments = Appointment.search(params[:search]).order(sort_column + " " + sort_direction)
   end
 
+  # GET /appointments
+  # GET /appointments.json
+  def calendar
+    @appointments = Appointment.all
+  end
+
   # GET /appointments/1
   # GET /appointments/1.json
   def show

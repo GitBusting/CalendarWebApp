@@ -23,11 +23,14 @@ $(function () {
 
 
 	$(document).on("click", "#appointments th a", function() {
-
-
 		$.getScript(this.href);
 		return false;
 	});
+
+	$(document).on("click", "#cal li a", function() {
+		$.getScript(this.href);
+		return false;
+	})
 
 	$("#appointments_search input").keyup(function() {
 		$.get($("#appointments_search").attr("action"), $("#appointments_search").serialize(), null, "script");
