@@ -11,6 +11,26 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require jquery
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+
+
+$(function () {
+
+
+
+	$(document).on("click", "#appointments th a", function() {
+
+
+		$.getScript(this.href);
+		return false;
+	});
+
+	$("#appointments_search input").keyup(function() {
+		$.get($("#appointments_search").attr("action"), $("#appointments_search").serialize(), null, "script");
+		return false;
+	});
+});
