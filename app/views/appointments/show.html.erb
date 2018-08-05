@@ -9,6 +9,10 @@
   <strong>Start time:</strong>
   <%= @appointment.start_time %>
 </p>
+  <p>
+  <strong>Period:</strong>
+  <%= @appointment.period %>
+</p>
 
 <%= link_to 'Edit', edit_appointment_path(@appointment) %> |
 <%= link_to 'Back', appointments_path %>
