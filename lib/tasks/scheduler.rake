@@ -14,19 +14,24 @@ namespace :scheduler do
       print " = "
       print ((appointment.start_time)- Time.now)/60
       print "\n"
-      if ((appointment.start_time)-Time.now)/60 <= 10
+      if ((appointment.start_time)-Time.now)/60 <= 10 && ((appointment.start_time)-Time.now)/60 > 0
         #send notification
         uri = URI.parse("https://fcm.googleapis.com/v1/projects/calendarapp-efa63/messages:send")
         token_api = "AIzaSyCWHSISWMed0D7kYx6bBTBsWQgqAj-AjQs"
         header = {'Content-Type' => 'application/json',
                   'Authorization' => 'Bearer ' + "ya29.c.ElrxBSTV_STdmRIuG7hDt7Eq-v7cRPRVTB2pidK1QNcYApzmxlQghE8F5fXuzja9Du1iXwitKSnqEo-HXVL9K-fUlGhRMJtE_Zka1WZ-GBuLEgVmSYebv2yA8jE"
                   }
-        msg_to_send = ((appointment.start_time)-Time.now)/60 + "ITS BRITNEY BITCH"
+        msg_to_send = appointment.name
         msg = {message: {
               token: "d9opWCgj_n4:APA91bGZ00GpBONsc21hJ6p-eoAlx9ryHI9bW5DcaI2LvVpntwP_kV_FvMaoD_ehaA1vXmb89hJF02f7FAjXo671dG1Gwjv0PraMdxkJBRlAI777qwQ1KMf1D39twt_AJGaqpilgK8gz9s4sto458qccz46gXm6_eA",
                 notification: {
                 body: msg_to_send,
-                title: ':-)'
+                title: 'CalendarWebApp ⚡'
+              },
+                android: {
+                  notification: {
+                    sound: 'default'
+                  }
                 }
               }
             }
