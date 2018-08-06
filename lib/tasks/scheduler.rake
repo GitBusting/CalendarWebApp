@@ -4,11 +4,12 @@ namespace :scheduler do
     print "env: #{Rails.env}"
     Appointment.all.each do |appointment|
       #print appointment.name
-      print appointment.start_time
+      date = appointment.start_time
+      print date
       print " - "
       print Time.now
       print " = "
-      print (Time.now - appointment.start_time)/60
+      print (Time.now - (appointment.start_time+3*60*60))/60
       print "\n"
     end
   end
