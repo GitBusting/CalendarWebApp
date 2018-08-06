@@ -78,7 +78,7 @@ class AppointmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def appointment_params
-      params.require(:appointment).permit(:name, :start_time,:user_name)
+      params.require(:appointment).permit(:name, :start_time,:user_name,:period)
     end
 
     def sort_column
@@ -90,4 +90,3 @@ class AppointmentsController < ApplicationController
     end
 
 end
-
