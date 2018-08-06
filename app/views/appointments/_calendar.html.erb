@@ -1,10 +1,40 @@
 <% start_date = params.fetch(:start_date, Date.today).to_date %>
 <% date_range = (start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week).to_a %>
 
-<% appointments_in_this_month = @appointments.select{ |app| ( date_range.include?(app.start_time.to_date))} %>
+<% appointments_in_this_month = @appointments.select{ |app| ( date_range.include?(app.start_time.to_date) && app.period).blank?} %>
 
 <% appointment_days = [] %>
 <% appointments_in_this_month.each do |app| appointment_days.push(app.start_time.to_date) end%>
+<% weekly = @appointments.select{ |app| app.period == 7} %>
+<% monthly = @appointments.select{ |app| app.period == 30} %>
+<% yearly = @appointments.select{ |app| app.period == 365} %>
+<% monthly.each do |app|  %>
+<%  appointments_in_this_month.push(app) %>
+<%  app_start_date = app.start_time.to_date %>
+<%  appointment_days.push(Date.new(start_date.year, start_date.mon, app_start_date.mday).to_date) %>
+<% end %>
+
+<% weekly.each do |app| %>
+  <% first_day = start_date.beginning_of_month.beginning_of_week %>
+  <%  app_start_date = app.start_time.to_date %>
+  <% current_day = first_day.next_day(app_start_date.cwday - 1) %>
+  <%  date_range.length/7.times do |i| %>
+    <% appointments_in_this_month.push(app) %>
+    <% appointment_days.push(current_day) %>
+    <% current_day = current_day.next_day(7)%>
+  <%  end   %>
+<%  end %>
+
+<% yearly.each do |app| %>
+  <% if date_range.include?(Date.new(start_date.year, app.start_time.to_date.mon, app.start_time.to_date.mday).to_date) %>
+    <% appointments_in_this_month.push(app) %>
+    <% appointment_days.push(Date.new(start_date.year, app.start_time.to_date.mon, app.start_time.to_date.mday).to_date) %>
+  <% end %>
+<% end %>
+
+
+<%  %>
+
 
 
 <div class="month" id="cal">      
