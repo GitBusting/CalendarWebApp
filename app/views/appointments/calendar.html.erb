@@ -1,5 +1,5 @@
 
-<%= link_to "Switch to List View", appointments_path %>
+<%= link_to "Switch to List View", appointments_path(:search => params[:search]) %>
 
 
 <%= form_tag appointments_calendar_path, :method => 'get', :id => "appointments_search" do %>

@@ -20,8 +20,6 @@
 
 $(function () {
 
-
-
 	$(document).on("click", "#appointments th a", function() {
 		$.getScript(this.href);
 		return false;
@@ -32,8 +30,9 @@ $(function () {
 		return false;
 	})
 
-	$("#appointments_search input").keyup(function() {
+	$(document).on('keyup', "#appointments_search p input", function() {
 		$.get($("#appointments_search").attr("action"), $("#appointments_search").serialize(), null, "script");
 		return false;
 	});
+
 });
