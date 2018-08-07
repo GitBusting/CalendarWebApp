@@ -22,7 +22,7 @@
 
   <div class="field">
     <%= form.label :start_time %>
-    <%= form.datetime_select :start_time, selected: Date.new(year.to_i, month.to_i, day.to_i) %>
+    <%= form.datetime_select :start_time, selected: Time.new(year.to_i, month.to_i, day.to_i).in_time_zone("Istanbul").to_date %>
   </div>
 
 
