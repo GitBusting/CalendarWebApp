@@ -7,9 +7,9 @@
 
 <% appointment_days = [] %>
 <% appointments_in_this_month.each do |app| appointment_days.push(app.start_time.to_date) end%>
-<% weekly = @appointments.select{ |app| app.period == 7} %>
-<% monthly = @appointments.select{ |app| app.period == 30} %>
-<% yearly = @appointments.select{ |app| app.period == 365} %>
+<% weekly = @appointments.select{ |app| app.start_time.beginning_of_month.beginning_of_week.to_date <= start_date && app.period == 7} %>
+<% monthly = @appointments.select{ |app| app.start_time.beginning_of_month.beginning_of_week.to_date <= start_date && app.period == 30} %>
+<% yearly = @appointments.select{ |app| app.start_time.beginning_of_month.beginning_of_week.to_date <= start_date && app.period == 365} %>
 <% monthly.each do |app|  %>
 <%  appointments_in_this_month.push(app) %>
 <%  app_start_date = app.start_time.to_date %>
