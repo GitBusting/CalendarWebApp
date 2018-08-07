@@ -70,7 +70,7 @@
               <% if day == start_date %>
                 <li><span class="active"><%= str %></span></li>
               <% else %>
-                <li><%= str %></li>
+                <li><%= link_to  day.day.to_s, new_appointment_path(:year => day.year, :month => day.mon, :day => day.mday) %> </li>
               <% end %>
               <% for i in 0...appointment_days.length do %>
                   <% if appointment_days[i] == day %>
