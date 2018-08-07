@@ -19,7 +19,7 @@ namespace :scheduler do
         uri = URI.parse("https://fcm.googleapis.com/v1/projects/calendarapp-efa63/messages:send")
         token_api = "AIzaSyCWHSISWMed0D7kYx6bBTBsWQgqAj-AjQs"
         header = {'Content-Type' => 'application/json',
-                  'Authorization' => 'Bearer ' + "ya29.c.ElrxBSTV_STdmRIuG7hDt7Eq-v7cRPRVTB2pidK1QNcYApzmxlQghE8F5fXuzja9Du1iXwitKSnqEo-HXVL9K-fUlGhRMJtE_Zka1WZ-GBuLEgVmSYebv2yA8jE"
+                  'Authorization' => 'Bearer ' + "ya29.c.ElryBUfcs1zDxEOSXj2Fr1ViXIweJKh8TADojK9ikgH80T3qJnJ5Ei_u9OPpuFkkDAAtTWtNnd1B-ESglIN-551NFouzCulVN0kTQzmndIdBy1AfhfcD7ebNEHs"
                   }
         msg_to_send = appointment.name
         msg = {message: {
